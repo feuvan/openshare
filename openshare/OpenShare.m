@@ -49,9 +49,11 @@ static NSMutableDictionary *keys;
     return [keys valueForKey:platform]?keys[platform]:nil;
 }
 
-+(void)openURL:(NSString*)url{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
++(void)openURL:(NSString*)urlStr{
+    NSURL *url = [NSURL URLWithString:urlStr];
+    [[UIApplication sharedApplication] openURL:url options:nil completionHandler:nil];
 }
+
 +(BOOL)canOpen:(NSString*)url{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
 }
